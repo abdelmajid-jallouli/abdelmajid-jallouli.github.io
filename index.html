@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abdelmajid Jallouli — Cloud &amp; Platform Engineer</title>
+<meta name="description" content="Final-year engineering student at ESPRIT specialising in cloud infrastructure, Kubernetes and CI/CD. Available for a 6-month end-of-studies internship.">
+<meta property="og:title" content="Abdelmajid Jallouli — Cloud &amp; Platform Engineer">
+<meta property="og:description" content="Cloud infrastructure, Kubernetes, Terraform, CI/CD. Available for a 6-month PFE internship from January 2027.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B0D10;
+    --bg-2:#0F1216;
+    --card:#12161B;
+    --line:#1F252D;
+    --line-2:#2A323C;
+    --text:#EDEFF2;
+    --dim:#8A94A2;
+    --dim-2:#626C7A;
+    --accent:#5EEAD4;
+    --accent-2:#38BDF8;
+    --glow:rgba(94,234,212,.14);
+    --radius:14px;
+    --max:1080px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:'Inter',system-ui,sans-serif;
+    font-size:16px;line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--accent);color:#06261F}
+
+  /* ambient background */
+  .bg-layer{position:fixed;inset:0;z-index:-2;pointer-events:none}
+  .bg-grid{
+    position:absolute;inset:0;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:64px 64px;
+    opacity:.35;
+    mask-image:radial-gradient(ellipse 90% 60% at 50% 0%,#000 30%,transparent 78%);
+    -webkit-mask-image:radial-gradient(ellipse 90% 60% at 50% 0%,#000 30%,transparent 78%);
+  }
+  .bg-glow{
+    position:absolute;top:-340px;left:50%;transform:translateX(-50%);
+    width:1100px;height:720px;border-radius:50%;
+    background:radial-gradient(circle,var(--glow),transparent 62%);
+    filter:blur(40px);
+  }
+  .bg-glow.two{
+    top:auto;bottom:-420px;left:12%;width:760px;height:560px;
+    background:radial-gradient(circle,rgba(56,189,248,.10),transparent 62%);
+  }
+
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
+
+  /* nav */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(11,13,16,.72);
+    backdrop-filter:saturate(160%) blur(14px);
+    -webkit-backdrop-filter:saturate(160%) blur(14px);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s ease,background .3s ease;
+  }
+  nav.scrolled{border-bottom-color:var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:600;letter-spacing:-.01em;text-decoration:none;color:var(--text)}
+  .brand .mark{
+    width:30px;height:30px;border-radius:8px;flex-shrink:0;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    display:grid;place-items:center;color:#06261F;font-size:13px;font-weight:700;
+    font-family:'JetBrains Mono',monospace;
+  }
+  .navlinks{display:flex;gap:4px;align-items:center}
+  .navlinks a{
+    color:var(--dim);text-decoration:none;font-size:14px;font-weight:450;
+    padding:7px 13px;border-radius:8px;transition:color .2s,background .2s;
+  }
+  .navlinks a:hover{color:var(--text);background:rgba(255,255,255,.045)}
+  .navlinks .cta{
+    color:var(--accent);border:1px solid var(--line-2);margin-left:8px;
+  }
+  .navlinks .cta:hover{border-color:var(--accent);background:rgba(94,234,212,.08);color:var(--accent)}
+  @media(max-width:700px){.navlinks a:not(.cta){display:none}}
+
+  /* hero */
+  .hero{padding:104px 0 84px}
+  .hero-inner{display:grid;grid-template-columns:1fr auto;gap:56px;align-items:center}
+  .badge{
+    display:inline-flex;align-items:center;gap:9px;
+    font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.02em;
+    color:var(--accent);background:rgba(94,234,212,.07);
+    border:1px solid rgba(94,234,212,.22);
+    padding:6px 13px;border-radius:99px;margin-bottom:26px;
+  }
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(94,234,212,.6);animation:pulse 2.4s infinite}
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(94,234,212,.55)}
+    70%{box-shadow:0 0 0 9px rgba(94,234,212,0)}
+    100%{box-shadow:0 0 0 0 rgba(94,234,212,0)}
+  }
+  .hero h1{
+    font-size:clamp(38px,5.4vw,60px);line-height:1.04;letter-spacing:-.032em;
+    font-weight:600;margin-bottom:18px;
+  }
+  .hero h1 em{
+    font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+    background:linear-gradient(100deg,var(--accent),var(--accent-2));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    letter-spacing:-.01em;
+  }
+  .hero .lede{color:var(--dim);font-size:17px;max-width:560px;margin-bottom:32px;font-weight:350}
+  .hero .lede strong{color:var(--text);font-weight:500}
+
+  .actions{display:flex;flex-wrap:wrap;gap:10px}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    text-decoration:none;font-size:14.5px;font-weight:500;
+    padding:11px 19px;border-radius:10px;transition:.22s ease;
+  }
+  .btn-primary{background:var(--accent);color:#06261F}
+  .btn-primary:hover{background:#7DF3E0;transform:translateY(-2px);box-shadow:0 8px 24px rgba(94,234,212,.22)}
+  .btn-ghost{color:var(--text);border:1px solid var(--line-2);background:rgba(255,255,255,.02)}
+  .btn-ghost:hover{border-color:var(--dim-2);background:rgba(255,255,255,.055);transform:translateY(-2px)}
+  .btn svg{width:16px;height:16px;flex-shrink:0}
+
+  .portrait{position:relative;width:236px;flex-shrink:0}
+  .portrait img{
+    width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 18%;
+    border-radius:18px;display:block;
+    border:1px solid var(--line-2);
+    filter:saturate(.92) contrast(1.04);
+  }
+  .portrait::after{
+    content:"";position:absolute;inset:-1px;border-radius:18px;pointer-events:none;
+    background:linear-gradient(180deg,transparent 45%,rgba(11,13,16,.55));
+  }
+  .portrait .fallback{
+    width:100%;aspect-ratio:3/4;border-radius:18px;display:none;
+    place-items:center;font-family:'Instrument Serif',serif;font-size:56px;
+    color:var(--dim-2);background:var(--card);border:1px solid var(--line-2);
+  }
+  @media(max-width:800px){
+    .hero{padding:68px 0 56px}
+    .hero-inner{grid-template-columns:1fr;gap:34px}
+    .portrait{width:150px;order:-1}
+  }
+
+  /* marquee strip */
+  .strip{
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    background:var(--bg-2);overflow:hidden;padding:15px 0;
+    mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+  }
+  .track{display:flex;gap:44px;width:max-content;animation:scroll 34s linear infinite}
+  .strip:hover .track{animation-play-state:paused}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+  .track span{
+    font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--dim-2);
+    white-space:nowrap;letter-spacing:.01em;
+  }
+  .track span::before{content:"◆";color:var(--accent);opacity:.5;margin-right:12px;font-size:8px;vertical-align:middle}
+
+  /* sections */
+  section{padding:88px 0}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:38px}
+  .sec-head .num{
+    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);opacity:.8;
+  }
+  .sec-head h2{font-size:27px;font-weight:600;letter-spacing:-.022em}
+  .sec-head .rule{flex:1;height:1px;background:var(--line)}
+
+  .prose{color:var(--dim);max-width:660px;font-weight:350;font-size:16.5px}
+  .prose + .prose{margin-top:15px}
+  .prose strong{color:var(--text);font-weight:500}
+
+  /* skills */
+  .skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:12px}
+  .skill{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px 21px;transition:border-color .25s,transform .25s;
+  }
+  .skill:hover{border-color:var(--line-2);transform:translateY(-3px)}
+  .skill h3{
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.07em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:13px;font-weight:500;
+  }
+  .tags{display:flex;flex-wrap:wrap;gap:7px}
+  .tags span{
+    font-size:13px;color:var(--dim);background:rgba(255,255,255,.035);
+    border:1px solid var(--line);padding:4px 10px;border-radius:7px;
+  }
+
+  /* timeline */
+  .tl{position:relative;padding-left:26px}
+  .tl::before{content:"";position:absolute;left:4px;top:8px;bottom:8px;width:1px;background:var(--line)}
+  .tl-item{position:relative;padding-bottom:34px}
+  .tl-item:last-child{padding-bottom:0}
+  .tl-item::before{
+    content:"";position:absolute;left:-26px;top:8px;width:9px;height:9px;border-radius:50%;
+    background:var(--bg);border:2px solid var(--line-2);transition:border-color .25s;
+  }
+  .tl-item:first-child::before{border-color:var(--accent);box-shadow:0 0 0 4px rgba(94,234,212,.1)}
+  .tl-when{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--dim-2);margin-bottom:5px}
+  .tl-item h3{font-size:17px;font-weight:600;letter-spacing:-.01em;margin-bottom:3px}
+  .tl-org{color:var(--accent);font-size:14px;margin-bottom:9px;font-weight:450}
+  .tl-item p{color:var(--dim);font-size:14.5px;max-width:640px;font-weight:350}
+
+  /* projects */
+  .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(324px,1fr));gap:14px}
+  .proj{
+    position:relative;background:var(--card);border:1px solid var(--line);
+    border-radius:var(--radius);padding:24px;overflow:hidden;
+    transition:border-color .28s,transform .28s;
+  }
+  .proj::before{
+    content:"";position:absolute;inset:0;opacity:0;transition:opacity .28s;
+    background:radial-gradient(520px circle at var(--mx,50%) var(--my,0%),rgba(94,234,212,.07),transparent 42%);
+    pointer-events:none;
+  }
+  .proj:hover{border-color:var(--line-2);transform:translateY(-4px)}
+  .proj:hover::before{opacity:1}
+  .proj-top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:10px}
+  .proj h3{font-size:17.5px;font-weight:600;letter-spacing:-.015em}
+  .proj .year{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--dim-2);white-space:nowrap;padding-top:3px}
+  .proj p{color:var(--dim);font-size:14.5px;margin-bottom:16px;font-weight:350}
+  .proj .stack{display:flex;flex-wrap:wrap;gap:6px}
+  .proj .stack span{
+    font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);
+    background:rgba(94,234,212,.06);border:1px solid rgba(94,234,212,.16);
+    padding:3px 8px;border-radius:5px;
+  }
+
+  /* languages */
+  .langs{display:flex;flex-wrap:wrap;gap:10px}
+  .lang{
+    display:flex;align-items:baseline;gap:9px;
+    background:var(--card);border:1px solid var(--line);
+    border-radius:10px;padding:11px 16px;
+  }
+  .lang b{font-weight:500;font-size:14.5px}
+  .lang span{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--dim-2)}
+
+  /* contact */
+  .contact-card{
+    background:linear-gradient(160deg,var(--card),var(--bg-2));
+    border:1px solid var(--line-2);border-radius:20px;
+    padding:46px 40px;position:relative;overflow:hidden;
+  }
+  .contact-card::before{
+    content:"";position:absolute;top:-130px;right:-90px;width:380px;height:380px;border-radius:50%;
+    background:radial-gradient(circle,rgba(94,234,212,.11),transparent 62%);
+  }
+  .contact-card h2{font-size:29px;font-weight:600;letter-spacing:-.025em;margin-bottom:12px;position:relative}
+  .contact-card p{color:var(--dim);max-width:520px;margin-bottom:26px;position:relative;font-weight:350}
+  .contact-card .actions{position:relative}
+  .contact-meta{
+    display:flex;flex-wrap:wrap;gap:22px;margin-top:28px;padding-top:24px;
+    border-top:1px solid var(--line);position:relative;
+  }
+  .contact-meta div{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--dim)}
+  .contact-meta div b{display:block;color:var(--dim-2);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px;font-weight:500}
+  .contact-meta a{color:var(--text);text-decoration:none;border-bottom:1px solid var(--line-2)}
+  .contact-meta a:hover{color:var(--accent);border-color:var(--accent)}
+
+  footer{
+    border-top:1px solid var(--line);padding:30px 0 46px;margin-top:88px;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--dim-2);
+  }
+  footer a{color:var(--dim);text-decoration:none}
+  footer a:hover{color:var(--accent)}
+
+  /* reveal */
+  .rv{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+  .rv.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    .rv{opacity:1;transform:none;transition:none}
+    .track{animation:none}
+    .dot{animation:none}
+    html{scroll-behavior:auto}
+  }
+  @media(max-width:640px){
+    .wrap{padding:0 20px}
+    section{padding:64px 0}
+    .contact-card{padding:34px 24px}
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-layer"><div class="bg-grid"></div><div class="bg-glow"></div><div class="bg-glow two"></div></div>
+
+<nav id="nav">
+  <div class="wrap">
+    <a href="#top" class="brand"><span class="mark">AJ</span> Abdelmajid Jallouli</a>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#stack">Stack</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact" class="cta">Get in touch</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-inner">
+    <div>
+      <div class="badge"><span class="dot"></span> Available · 6-month internship from Jan 2027</div>
+      <h1>Cloud &amp; platform engineering, <em>end to end.</em></h1>
+      <p class="lede">Final-year engineering student at <strong>ESPRIT</strong>, Tunis. I build the full path from a feature to production — writing the service, containerising it, automating the infrastructure underneath, and watching it once it's live.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="mailto:jalloulimajdou@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 6 8-6"/></svg>
+          Email me
+        </a>
+        <a class="btn btn-ghost" href="resume.pdf" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><path d="m7 12 5 5 5-5"/><path d="M5 21h14"/></svg>
+          Download CV
+        </a>
+        <a class="btn btn-ghost" href="https://github.com/abdelmajid-jallouli" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.8.1-.7.1-.7 1.2.1 1.9 1.2 1.9 1.2 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0C17.4 5 18.4 5.3 18.4 5.3c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg>
+          GitHub
+        </a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/abdelmajid-jallouli-593833398/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.5 4.7 5.8V21h-4v-5.8c0-1.4 0-3.2-2-3.2s-2.3 1.5-2.3 3.1V21h-4V9Z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+    <div class="portrait">
+      <img src="assets/photo.jpg" alt="Abdelmajid Jallouli" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+      <div class="fallback">AJ</div>
+    </div>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="track" id="track">
+    <span>Kubernetes</span><span>Terraform</span><span>OpenStack</span><span>Docker</span><span>Ansible</span><span>Jenkins</span><span>GitHub Actions</span><span>Prometheus</span><span>Grafana</span><span>Spring Boot</span><span>Angular</span><span>Azure</span><span>Rancher</span><span>CCNA</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section id="about">
+    <div class="sec-head"><span class="num">01</span><h2>About</h2><span class="rule"></span></div>
+    <p class="prose rv">I'm a computer engineering student at ESPRIT specialising in <strong>IT Architecture &amp; Cloud Computing</strong>. My work sits where application development meets the infrastructure that runs it — I'd rather ship a small service with a real pipeline, real monitoring and reproducible infrastructure than build something bigger that only runs on my laptop.</p>
+    <p class="prose rv">Over the last two years that's meant standing up a private cloud on OpenStack, automating Kubernetes rollouts with Ansible, writing Terraform for infrastructure I actually had to maintain, and wiring Prometheus and Grafana in front of it so I could tell when it broke. I'm now looking for a <strong>6-month end-of-studies internship in Europe</strong>, in DevOps, SRE, or platform engineering.</p>
+  </section>
+
+  <section id="stack">
+    <div class="sec-head"><span class="num">02</span><h2>Stack</h2><span class="rule"></span></div>
+    <div class="skills">
+      <div class="skill rv"><h3>Cloud &amp; Infrastructure</h3><div class="tags"><span>OpenStack</span><span>Microsoft Azure</span><span>AWS</span><span>Rancher</span></div></div>
+      <div class="skill rv"><h3>Containers &amp; Orchestration</h3><div class="tags"><span>Docker</span><span>Podman</span><span>Kubernetes</span><span>Helm</span></div></div>
+      <div class="skill rv"><h3>Infrastructure as Code</h3><div class="tags"><span>Terraform</span><span>Ansible</span></div></div>
+      <div class="skill rv"><h3>CI/CD</h3><div class="tags"><span>Jenkins</span><span>GitHub Actions</span><span>GHCR</span><span>Git</span></div></div>
+      <div class="skill rv"><h3>Observability</h3><div class="tags"><span>Prometheus</span><span>Grafana</span></div></div>
+      <div class="skill rv"><h3>Languages</h3><div class="tags"><span>Java</span><span>Python</span><span>C / C++</span><span>TypeScript</span><span>PHP</span><span>Bash</span></div></div>
+      <div class="skill rv"><h3>Frameworks</h3><div class="tags"><span>Spring Boot</span><span>Angular</span><span>Symfony</span><span>JavaFX</span><span>Qt</span></div></div>
+      <div class="skill rv"><h3>Networking</h3><div class="tags"><span>CCNA — Cisco, 2024</span><span>Firewalls</span><span>Routing &amp; Switching</span></div></div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="sec-head"><span class="num">03</span><h2>Experience</h2><span class="rule"></span></div>
+    <div class="tl">
+      <div class="tl-item rv">
+        <div class="tl-when">Jul — Aug 2026</div>
+        <h3>DevOps &amp; Software Engineering Intern</h3>
+        <div class="tl-org">Société Amine de Gestion des Entreprises</div>
+        <p>Built a web management application for company users, then took it all the way to production: a Jenkins pipeline automating builds and deployments, containerisation with Docker/Podman, orchestration on Kubernetes via Rancher, infrastructure provisioned with Terraform, and a Prometheus + Grafana monitoring stack in front of it.</p>
+      </div>
+      <div class="tl-item rv">
+        <div class="tl-when">Jul — Aug 2025</div>
+        <h3>Backend Engineering Intern</h3>
+        <div class="tl-org">Société Amine de Gestion des Entreprises</div>
+        <p>Designed the data model and business logic for the company's financial balance sheet management, built the backend with PHP, Symfony and Doctrine ORM, and shipped data entry and consultation interfaces with Twig, Bootstrap and AJAX.</p>
+      </div>
+      <div class="tl-item rv">
+        <div class="tl-when">Jul 2023</div>
+        <h3>Network Security Intern</h3>
+        <div class="tl-org">Tunisair</div>
+        <p>Configured and managed firewalls securing the company's network infrastructure.</p>
+      </div>
+      <div class="tl-item rv">
+        <div class="tl-when">2022 — 2027</div>
+        <h3>National Engineering Degree, Computer Science</h3>
+        <div class="tl-org">ESPRIT — Tunis, Tunisia</div>
+        <p>Specialisation in IT Architecture &amp; Cloud Computing. Baccalaureate in Mathematics, Lycée Mohamed Boudhina, 2022.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="sec-head"><span class="num">04</span><h2>Projects</h2><span class="rule"></span></div>
+    <div class="projects">
+
+      <article class="proj rv">
+        <div class="proj-top"><h3>Private Cloud &amp; University Platform</h3><span class="year">2025—26</span></div>
+        <p>Built a private cloud from scratch on OpenStack (Nova, Neutron, Keystone, Cinder), automated Docker and Kubernetes deployment through Ansible playbooks, and deployed a multi-function Spring Boot + Angular platform on top of it, with the database hosted on Azure and full Prometheus/Grafana observability.</p>
+        <div class="stack"><span>OpenStack</span><span>Kubernetes</span><span>Ansible</span><span>Spring Boot</span><span>Angular</span><span>Azure</span></div>
+      </article>
+
+      <article class="proj rv">
+        <div class="proj-top"><h3>Local Lens — Urban Exploration</h3><span class="year">2024—25</span></div>
+        <p>A SmartCity platform for discovering points of interest, joining community clubs and planning trips. Built the desktop client in JavaFX with facial-recognition authentication (OpenCV, DeepFace4j) alongside Google Auth, and integrated Google Maps, Foursquare, OpenWeather, SightEngine and OpenAI/Gemini for mapping, content moderation and AI-generated descriptions.</p>
+        <div class="stack"><span>JavaFX</span><span>Java</span><span>OpenCV</span><span>Leaflet.js</span><span>REST APIs</span></div>
+      </article>
+
+      <article class="proj rv">
+        <div class="proj-top"><h3>Gym Management Application</h3><span class="year">2023—24</span></div>
+        <p>A desktop application for managing gym operations — members, subscriptions and scheduling — built in C++ with Qt graphical interfaces.</p>
+        <div class="stack"><span>C++</span><span>Qt</span></div>
+      </article>
+
+      <article class="proj rv">
+        <div class="proj-top"><h3>ESCPRIT — SDL Game</h3><span class="year">2022—23</span></div>
+        <p>A video game written in C/C++ on the SDL library, covering rendering, input handling, collision and game state as a first-year integrated project.</p>
+        <div class="stack"><span>C</span><span>C++</span><span>SDL</span></div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="languages">
+    <div class="sec-head"><span class="num">05</span><h2>Languages</h2><span class="rule"></span></div>
+    <div class="langs">
+      <div class="lang rv"><b>Arabic</b><span>Native</span></div>
+      <div class="lang rv"><b>French</b><span>B2</span></div>
+      <div class="lang rv"><b>English</b><span>B2</span></div>
+      <div class="lang rv"><b>German</b><span>A2</span></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-card rv">
+      <h2>Looking for a 6-month internship</h2>
+      <p>I'm available from January 2027 for a 6-month end-of-studies internship in DevOps, SRE or platform engineering. My internship is a required part of my degree, so my school handles the agreement — if you'd like the details, I'm one email away.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="mailto:jalloulimajdou@gmail.com">jalloulimajdou@gmail.com</a>
+        <a class="btn btn-ghost" href="resume.pdf" download>Download CV</a>
+      </div>
+      <div class="contact-meta">
+        <div><b>Based in</b>Tunis, Tunisia</div>
+        <div><b>Phone</b>+216 56 50 36 62</div>
+        <div><b>GitHub</b><a href="https://github.com/abdelmajid-jallouli" target="_blank" rel="noopener">abdelmajid-jallouli</a></div>
+        <div><b>LinkedIn</b><a href="https://www.linkedin.com/in/abdelmajid-jallouli-593833398/" target="_blank" rel="noopener">abdelmajid-jallouli</a></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Abdelmajid Jallouli</span>
+    <span>Built by hand · deployed with GitHub Actions</span>
+  </footer>
+
+</div>
+
+<script>
+  // sticky nav border
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 12);
+  onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+
+  // scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        e.target.style.transitionDelay = Math.min(i * 55, 220) + 'ms';
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+  // seamless marquee
+  const track = document.getElementById('track');
+  track.innerHTML += track.innerHTML;
+
+  // cursor glow on project cards
+  document.querySelectorAll('.proj').forEach(card => {
+    card.addEventListener('pointermove', e => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+</script>
+
+</body>
+</html>
